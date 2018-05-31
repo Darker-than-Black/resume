@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="main.css">
+
+    <title>V 2.0</title>
+
+    <style>
+      .about,
+      .contact,
+      .skills,
+      .work {
+        display: block;
+        position: fixed;
+        padding: 30px 0;
+        margin: 0;
+        box-sizing: border-box;
+        z-index: 99;
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        overflow: auto;
+      }
+
+      .about,
+      .contact {
+        width: 100%;
+        height: 85vh;
+
+        background-color: red;
+      }
+
+      .skills,
+      .work {
+        width: 90vw;
+        height: 100%;
+
+        background-color: white; 
+        
+        /* transition: right 1s ease-in; */
+      }
+
+      .about {
+        top: -85vh;
+      }
+
+      .about.active {
+        top: 0;
+      }
+
+      .menu.top {
+        top: 85vh;
+        height: 15vh;
+      }
+
+      .contact {
+        bottom: -85vh;
+      }
+
+      .contact.active {
+        bottom: 0;
+      }
+
+      .menu.bottom {
+        bottom: 85vh;
+        height: 15vh;
+      }
+
+      .skills {
+        left: -90vw;
+      }
+
+      .skills.active {
+        left: 0;
+      }
+
+      .menu.left {
+        left: 90vw;
+        width: 10vw;
+      }
+
+      .work {
+        right: -90vw;
+      }
+      
+      .work.active {
+        right: 0;
+      }
+
+      .menu.right {
+        right: 90vw;
+        width: 10vw;
+      }
+
+      .menu.left ul,
+      .menu.right ul {
+        display: inline-block;
+      }
+      
+      .menu.left ul li,
+      .menu.right ul li {
+        float: none;
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="menu">
+      <ul>
+        <li class="btMenu btHome"><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
+        <li class="btMenu btAbout"><a href="#"><i class="fab fa-napster"></i><span>About</span></a></li>
+        <li class="btMenu btSkills"><a href="#"><i class="far fa-gem"></i><span>skills</span></a></li>
+        <li class="btMenu btWork"><a href="#"><i class="fas fa-code"></i><span>My work</span></a></li>
+        <li class="btMenu btContact"><a href="#"><i class="far fa-envelope"></i><span>Contact</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="content">
+      <div class="about">
+        <h1>About Me</h1>
+      </div>
+
+      <div class="contact">
+        <h1>My Contact's</h1>
+      </div>
+
+      <div class="skills">
+        <div>left</div>
+      </div>
+
+      <div class="work">
+        <p>right</p>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+    $(function() {
+     $('.btAbout').click( function() {
+      $('.skills').removeClass('active');
+      $('.work').removeClass('active');
+      $('.contact').removeClass('active');
+
+      $('.menu').removeClass('right');
+      $('.menu').removeClass('left');
+      $('.menu').removeClass('bottom');
+     /* $('.about').addClass('active');*/
+          if ($('.about').hasClass('active')){
+            $('.menu').removeClass('top');
+            $('.about').removeClass('active'); 
+          }else{
+            $('.about').addClass('active');
+            $('.menu').addClass('top');
+          }
+      });
+
+     $('.btContact').click( function() {
+      $('.about').removeClass('active');
+      $('.skills').removeClass('active');
+      $('.work').removeClass('active');
+
+      $('.menu').removeClass('right');
+      $('.menu').removeClass('left');
+      $('.menu').removeClass('top');
+     /* $('.contact').addClass('active');*/
+        if ($('.contact').hasClass('bottom')){
+          /*$('.contact').removeClass('bottom'); */ 
+          $('.menu').removeClass('bottom');
+          $('.contact').removeClass('active'); 
+        }else{
+          $('.contact').addClass('active');
+          $('.menu').addClass('bottom');
+        }
+      });
+
+     $('.btSkills').click( function() {
+      $('.about').removeClass('active');
+      $('.contact').removeClass('active');
+      $('.work').removeClass('active');
+
+      $('.menu').removeClass('right');
+      $('.menu').removeClass('top');
+      $('.menu').removeClass('bottom');
+      /*$('.skills').addClass('active');*/
+        if ($('.skills').hasClass('left')){
+          /*$('.skills').removeClass('left');*/  
+          $('.menu').removeClass('left');
+          $('.skills').removeClass('active');  
+        }else{
+          $('.skills').addClass('active');
+          $('.menu').addClass('left');
+        }
+      });
+
+     $('.btWork').click( function() {
+      $('.about').removeClass('active');
+      $('.contact').removeClass('active');
+      $('.skills').removeClass('active');
+
+      $('.menu').removeClass('left');
+      $('.menu').removeClass('top');
+      $('.menu').removeClass('bottom');
+      /*$('.work').addClass('active');*/
+        if ($('.work').hasClass('active')){
+         /* $('.work').removeClass('right');*/  
+          $('.menu').removeClass('right');
+          $('.work').removeClass('active'); 
+        }else{
+          $('.work').addClass('active');
+          $('.menu').addClass('right');
+        }
+      });
+
+     $('.btHome').click(function() {
+      $('.about').removeClass('active');
+      $('.contact').removeClass('active');
+      $('.skills').removeClass('active');
+      $('.work').removeClass('active');
+
+      $('.menu').removeClass('left');
+      $('.menu').removeClass('right');
+      $('.menu').removeClass('bottom');
+      $('.menu').removeClass('top');
+     });
+
+    /* $('.btMenu').click(function(){
+        $('.btMenu').each(function(){
+            $(this).prop('checked', false); 
+        }); 
+        $(this).prop('checked', true);
+      }); */
+    });
+    </script>
+
+  </body>
+</html>
